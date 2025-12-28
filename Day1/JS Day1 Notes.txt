@@ -1,0 +1,111 @@
+Java Script is used for both client side and server side.
+
+console.log(”JAVA SCRIPT”); will print the output as JAVA SCRIPT
+
+If we want to show anything on the webpage,  we will write under the body tag
+
+Inside Head of HTML tag we will write Script by using Script tag <script src=""></script> 
+
+in Double quotes we have to give the path of Java Script File as “./filename.js”
+
+After adding Path : <script src="./test.js"></script>
+src is source.
+
+shortcut for script tag is script:src and press enter.
+
+Now i want to show Welcome to Java Script on my Web Page so , adding h1 tag in body section
+
+<h1>Welcome to Java Script</h1>
+
+div tag is use to create a section in a webpage, inside that section we can keep anything like text, button as our wish.
+
+Every div as an id here id is “someId”
+
+```html
+<div id="someId">
+    </div>
+
+```
+
+Entire HTML is treated as a HTML document. In this document  if we any element by its ID, we call it by   document.getElementById(). In brackets we will put ID.
+
+document.getElementById("someId").
+
+Inside div we put text as “I am Some Div”
+
+This we will keep as document.getElementById("someId").innerText = "I am Some div” in script.js 
+Now Script.js consists of
+
+console.log("I am Java Script");
+
+ document.getElementById("someId").innerText = "I am Some div” 
+
+Now if we open webpage, we will see “Welcome to Java Script” and below a div with text "I am Some div” . If we Open console by inspect we have to see "I am Java Script"
+
+All executes well but, it shows an error script execution in console 
+
+Error is “test.js:3 Uncaught TypeError: Cannot set properties of null (setting 'innerText')”
+
+The error because, We have given the script tag inside head, it impacts on the script execution and gives error.
+
+Let it be in clear in 3 Steps.
+
+Whenever, we run the HTML page on the browser, 
+
+1. Browser will first download the html on browser and then
+
+ 2. It will build DOM (Document Object Model). DOM is a Tree like Structure. 
+
+1. Execution of Script
+
+In Clear Process,
+
+**If we put a Script tag in Head, At the top we have HTML,**
+
+First It will Download the HTML and build the DOM, then it will see a script in Head then it starts download the script and start executing the script and the the rest of HTML download will continue.
+
+In our HTML file, First it will download HTML file and HTML parsing going on and it found an script.js file then it start download the scriot.js and start execution of script.js. It start execution of first line which is console.log("I am Java Script"); and moving to next line,  document.getElementById("someId").innerText = "I am Some div”, but here, the HTML parsing has done only upto script, but here we mentioned  div id of “someId” in script part. At this point, it have no idea about the below div id because the parsing have done up to script only. So that after execution on second line of script.js it will throw an error. Then the rest HTML start execution, HTML body will execute and will not go into div because error caught at java script execution, but still an empty div will be crested with an id “someId”.
+
+Now to rectify this error developers got an another way, by putting the script.js at the end of the body.
+
+**Putting the Script tag at the end of the Body**
+
+ In this it will successfully execute and show output on the webpage and console. But the Problem in this is, Everything is Sequential, here we are waiting to download and execute the java script util the entire HTML parsing and DOM building is happen. What if we have a heavy one 
+
+- Browser parses HTML
+- Reaches `<script>`
+- **Stops parsing**
+- Downloads JS
+- Executes JS
+- Then continues HTML
+
+⛔ Slower page load for large JS files
+
+It takes long time.
+
+**Then the “async” came into picture**
+
+We will place the script in the head of HTML,     <script async src="./test.js"></script>
+It starts downloading of java script in parallel with HTML download and DOM building.  But here after the script is downloaded immediately HTML downloading and DOM building will be paused and script will be executed immediately, after execution is done the rest HTML parsing and building DOM will continue. But here problem is, after starting execution of script if the script.js have any code related to HTML that not downloaded and then the error occurs.
+
+**Now the “defer” came in to picture**
+
+It is some similar to “async” but it will complete the downloading of Script id done in parallel with HTML download and the DOM building. But is will not start execution of script immediately unlike the above methods and async, after downloading of script it will defered,  means keeping for the future. At this point, there are no chance of errors. After completion of HTML parsing and DOM building only the scrip will start execute. We are downloading the Java Script in parallel with HTML parsing and DOM building. Means here we also saving time.
+
+**Running Java Script from Server side**
+
+creating an script.js file with code
+
+console.log(”Java Script from Node JS”);
+
+After installing Node.js open terminal in the VS code and run → node filename.js
+
+then it will show output as  Java Script from Node JS
+
+This is running on Node environment.
+
+- **Java Script Loading Methods - 4**
+1. Script in the head
+2. Script at the end of body
+3. async
+4. defer
