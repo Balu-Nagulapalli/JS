@@ -1,0 +1,92 @@
+		Day 2 Notes Variables
+
+Variables are used to contain/store data.
+
+var - function scoped, can be re-declared, updated.
+
+let - block scoped, can be re-assigned, updated, cant be redeclared.
+
+const - block scoped, cannot be re-assigned, cant be re-declared, cant be updated.
+
+var, let, const are called as specifiers. 
+
+**Naming Convention:**
+
+Variable name must have letters or digits[0-9].
+
+Variable name can also have $, _
+
+Variable name first character must not be start a digit.
+
+No use of Reserved Key Words names as Variables .
+
+Variables names are case sensitive
+
+Ex: let name = ‘Balu’;
+
+let $ = ‘dollar’;
+
+let _ = ’underscore’;
+
+let myname = ‘Balu’;
+
+let Myname = ‘Balu’;
+
+**Variable Name Standards:**
+
+1. Use camelCase - means first letter starts with small letter, and second word first letter is in capital.
+2. Human Readable.
+3. The name should match the cause.
+
+ 
+
+Ex:  let myName = ‘Balu’;
+
+ 
+
+Syntax: 
+
+let name= “Balu”;  → Value Assignment
+
+name = “Krishna”;  → Value Updating
+
+For Any Primitive values, the value is assigned means, is “Pass By Value”.
+
+let fruit = “Mango”;
+
+let vegetable = “Carrot”;
+
+fruit = vegetable; → Carrot is assigned to fruit.
+
+Left Side variable fruit is updated by Carrot 
+
+Right side variable vegetable is same by containing Carrot.
+
+**Primitive Data Types:**
+
+1. String - sequence of characters - "Hello", 'A', "1234"
+2. Number - numeric values - 123, 12.34
+3. Boolean - true or false
+4. Undefined - variable declared but not assigned a value. Ex let name, let salary;
+5. Null - represents intentional absence of any object value. Ex let age = null;
+6. BigInt - used for very large integers
+7. Symbol - used to create unique identifiers for objects (Symbol('id'))
+
+**Non-Primitive Data Types:**
+
+1. objects - used to store collections of data and more complex entities.
+2. arrays - used to store multiple values in a single variable.
+3. Functions - block of code designed to perform a particular task.
+
+**NOTE:**
+
+Primitive Data type variables values are stored in Stack memory.
+
+Non-Primitive Data type variables values are stored in Heap memory.
+
+Whenever JAVA SCRIPT engine sees a line of code, it takes that line of code into 3 phases
+
+1. Tokenizing/ Tokenization - Breaking a line of code into pieces/words.
+2. Parsing - Java Script creates a tree structure with the tokens, it forms an ABS tree( Abstract Syntax tree). 
+3. Interpretation - 
+4. Generation code
