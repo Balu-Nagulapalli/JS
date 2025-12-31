@@ -1,0 +1,187 @@
+Day 3 Notes Operators
+
+**Operators**
+
+Operators are symbols, that perform operation on operators.
+
+**Operands: Operand = value** on which an operation is performed.
+
+a + b 
+
+a, b are operands
+
++ is an operator
+
+Expression - combination of operands and operators that evaluates to a value. Ex: x + y, a * b, etc.
+
+c = a + b * c;
+
+**Arithmetic Operators**: (+, -, *, /, %, ++, - - )
+
+Arithmetic Operators are used for numerical calculations.
+
+Ex : 
+
+let a = 2;
+
+let b = 3;
+
+console.log("a + b =", a + b); //5
+console.log("a - b =", a - b); //-1
+console.log("b - a =", b - a); //1
+console.log("a * b =", a * b); //6
+console.log("a / b =", a / b); //0.6666666666666666
+console.log("a % b =", a % b); //2
+console.log(a ** b) //Exponential //8
+
+**INCREMENT**
+
+**Post-increment**: returns the value before incrementing.
+
+let count = 5;
+
+console.log("Post INC Count++", count++); //5
+
+console.log("Post INC Res", count); //6
+
+**Pre-increment**: increments the value first, then returns the incremented value.
+
+let count = 5;
+
+console.log("Pre INC",++count); //6
+
+**DECREMENT**
+
+**Post-decrement**: returns the value before decrementing
+
+int count = 5
+
+console.log("Post DEC", count--); //5
+console.log("Post DEC Res", count); //OP-4 Decremented value
+
+**Pre-decrement**: decrements the value first, then returns the decremented value.
+
+int count = 5;
+
+console.log("Pre DEC", --count); //4
+
+**Assignment Operators:** (=, +=, -=, *=, /=, %=)
+
+let c=10;
+c += 5; //c = c + 5
+console.log("c += 5:", c);
+c -= 3; //c = c - 3
+console.log("c -= 3:", c);
+c *= 2; //c = c * 2
+console.log("c *= 2:", c);
+c /= 4; //c = c / 4
+console.log("c /= 4:", c);
+c %= 3; //c = c % 3
+console.log("c %= 3:", c);
+
+**Comparison Operators**: ( ==, ===, !=, !==, >, <, >=, <= )
+
+console.log("4==5",4==5);  //false
+console.log("0 == false", 0==false);  //true
+console.log("3 == '3'", 3=='3'); //true Comparing Number  3 and String 3 and giving true, because in JS == is known as loosely equal operator, it will not compare data types. That’s why its giving true.
+console.log("Null === Null",null === null); //true
+console.log("undefined === undefined",undefined===undefined);   //true
+
+**Nan = Not a Number // If any of the operand is Nan is doesn’t matter what is there in the other operand. It will return FALSE**
+
+console.log("NaN === NaN", NaN === NaN); //false ****
+
+let obj1 = {'Name': 'Balu'};
+let obj2 = {'Name': 'Balu'};
+console.log("Obj1 === obj2", obj1 === obj2); //false, Even tough values in variables are same its giving false. Because it is not compares variables data, it compares the by memory value addresses. Obj1 is and Obj2 are pointing to different memory addresses.
+
+console.log("Obj1 !== obj2", obj1 !== obj2); //true, Same as above explanation but operation is not equal.
+
+console.log("4==='4'",4==='4'); //false  Strict Equality operator compares both value and type
+console.log("3!=='3'", 3!=='3'); //true
+
+**Logical Operators**: AND (&&), OR (||), NOT (!), Nullish Coalescing Operator(??)
+
+console.log("true && true:", true && true); //true
+console.log("true || false:", true || false); //true
+
+console.log("Cow && Horse", "Cow" && "Horse"); //Horse
+
+console.log("Cow || Horse", "Cow" || "Horse"); //Cow
+
+console.log("!true:", !true); //false
+console.log("!false:", !false); //true
+
+Nullish Coalescing Operator(??)
+
+NOTE: If the first operand ins Null or Undefined then only it will return second operator. else it will return first operand.
+
+console.log(" null ?? 'Default Value':", null ?? "Default Value"); //Default Value
+console.log(" undefined ?? 'Default Value':", undefined ?? "Default Value"); //Default Value
+
+console.log(" false ?? 'Default Value':", false ?? "Default Value"); //false coz false is not a null or undefined. 
+console.log(" 0 ?? 'Default Value':", 0 ?? "Default Value"); //0 coz 0 is not a null or undefined
+
+**Conditional Ternary Operator:**
+
+//condition ? expression1 : expression2
+
+let age = 26;
+
+let res = age >=60 ? "Senior Citizen" : "Non Senior Citizen";
+console.log("Age:", age, res);
+
+**Bitwise Operators: &, |, ^, ~, <<, >>**
+
+10 is decimal
+
+10 in 32 Bits representation of 0’s and 1’s .
+
+& - Bitwise AND
+
+| = Bitwise OR
+
+^ - Bitwise XOR
+
+~ - Bitwise NOT (Shortcut = -(n+1))
+
+if n = 15 then, ~15 is -(15+1) = -16
+
+if n = 9 then, ~9 = -(9+1) = -10
+
+<< - Left Shift (Shortcut = n << k = n × (2^k))
+
+if n= 15 and k = 2 (Shifting Positions) then, 15 << 2 = 15*(2^2) = 15* 4 = 60
+
+if n = 9, k = 2 then, 9 << 2 = 9 * (2 ^ 2) = 9 * 4 = 36
+
+>> - Right Shift(Shortcut = n >> k = n >> k = Math.floor(n / (2^k))   // for positive numbers)
+
+if n = 15 and k = 2 then, 15 >> 2 = (15/(2^2)) = 15/4 = 3 floor value
+
+if n = 9, k = 2 then, 9 >> 2 = Math.floor(9 /(2 ^ 2)) = 9/4 = 2 floor value
+
+**Grouping:**
+
+let p = 1;
+let q = 2;
+let r = 3;
+
+console.log(p + q * r); //Without Grouping
+console.log(p + (q * r)); //With Grouping
+
+ **typeof():**
+
+returns the type of data
+
+let size = 123;
+console.log("Type of 123:", typeof size); //number
+console.log("Type of 'Hello':", typeof "Hello"); //string
+
+const arr = [1, 2, 3, 4, 5];
+console.log("Type of arr:", typeof arr); //object
+console.log("Type Arrays 4th Element :", typeof arr[4]); //number
+
+**instanceof:**
+
+Syntax : object instanceof objectType
