@@ -1,0 +1,59 @@
+Control Flow
+
+**if else**
+
+IF - this block will Executes when its true
+
+Else - IF block fails means this block will execute.
+
+**Multiple if else:**
+
+Contains of multiple IF Else blocks.
+
+Used when have Multiple conditions.
+
+**Switch Case:**
+
+Used when we have many conditions.
+
+Every Switch will have Case and Break and  every switch  will have a default case.
+
+Syntax :
+
+switch(condition)
+
+{
+
+case 1: 
+
+//Print;
+
+break;
+
+case 2: 
+
+//Print;
+
+break;
+
+default: 
+
+//break;
+
+}
+
+if we have too many conditions with a fixed value then we  use switch.
+
+console.log("**** Switch work as If else ****");
+let city = "Bangalore";
+switch (city)
+{
+case "Hyderabad":
+case "Bangalore":
+case "Agra":
+case "Jaipur":
+console.log("You are in India");
+break;
+case "New York":
+default:
+console.log("You are in USA");
