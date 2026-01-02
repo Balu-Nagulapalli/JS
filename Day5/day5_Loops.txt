@@ -1,0 +1,42 @@
+Loops
+Used for doing is a task repeatedly. 
+
+3 loops
+
+For loop - Used when we know fixed number of iterations
+
+While loop - Use when don’t know how many times to run. 
+
+do while loop - Will run definitely one time without checking the condition. 
+
+For loop - Used when we know how many times to repeat something.
+
+for(initialization; condition; update)
+
+{
+
+//Block of Code
+
+}
+
+break : Its stops the execution and comes out from loop.
+
+continue : Skip the particular iteration and rest will continue.
+
+while loop : Used when we don't know how many times to repeat condition/something.
+
+while(condition)
+{
+    //Code
+}
+
+
+do while loop : - Executes the block of code once, and then repeats the loop as long as the specified condition is true.
+
+
+do{
+    //code block to be executed
+}
+while(condition){
+    //code block to be executed
+}
