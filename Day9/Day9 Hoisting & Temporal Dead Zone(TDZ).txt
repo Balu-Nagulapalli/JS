@@ -1,0 +1,209 @@
+ Hoisting & Temporal Dead Zone(TDZ)
+
+Hoisting is allocating the Memory during the initialization of variables and functions.
+
+In clear:
+
+Hoisting is JavaScript’s behavior of moving variable and function declarations to the top of their scope and allocating memory during the creation phase before execution starts.
+
+```jsx
+console.log("Welcome to Day 9 of 40 Days JS");
+console.log('Name is ',name);
+var name;
+name = 'Tom' ;
+console.log('Name is ',name)
+```
+
+o/p:
+
+Welcome to Day 9 of 40 Days JS
+script9.js:2 Name is
+
+script9.js:5 Name is  Tom
+
+Here,
+
+In above code, line 2, name is used before declaring but still it is not showing any error because of **“Hoisting”**
+
+GEC:
+
+CP:
+
+name: undefined
+
+EP:
+
+name: ‘Tom’
+
+- name will be `undefined` first
+- then later it becomes `"Tom"`
+
+Because of this in first line of console.log() given blank,  Name is
+
+In second line variable is assigned, So output is Name is  Tom
+
+But with let keyword, will show error. 
+
+```
+console.log("Welcome to Day 9 of 40 Days JS");
+console.log('Name is ',name);
+let name;
+name = 'Tom' ;
+console.log('Name is ',name)
+```
+
+O/P:
+
+script9.js:2 Uncaught ReferenceError: Cannot access 'name' before initialization
+
+Explanation:
+
+GEC:
+
+CP:
+
+name: won’t be initialized with undefined!
+
+EP:
+
+name: ‘Tom’
+
+So, Due to this reason, it will show error.
+
+We cannot use a let variable until  a value has been assigned to it.
+
+With const keyword, Shows error
+
+```jsx
+console.log("Welcome to Day 9 of 40 Days JS");
+console.log('Name is ',name);
+const name;
+name = 'Tom' ;
+console.log('Name is ',name)
+```
+
+O/P:
+
+script9.js:3 Uncaught SyntaxError: Missing initializer in const declaration
+
+Because, We all know that if we use const we cannot assign any other value to it. 
+
+ **Temporal Dead Zone(TDZ)**
+
+TDZ(Temporal Dead Zone) - An area where u cannot access a variable until it is initialized
+
+If we try to access anything with in the TDZ, it will give Reference Error. 
+
+```jsx
+//block
+{
+    //  name variable TDZ starts here
+    //
+    console.log(name); // Reference Error 
+    //
+    //
+    //
+    //
+    let name="Balu" //name varibale TDZ ends here
+    console.log(name); 
+}
+```
+
+This particular Block name variable TDZ starts where the code in the block starts. And name variable TDZ ends where the variable got assigned.
+
+Will show error, because we are printing before TDZ ends, If we comment the first     console.log(name); means it will not show error, and will print Balu as TDZ ends after initialized.
+
+**Function Hoisting**
+
+```jsx
+chase(); //involing a function chase()
+
+//Declare a Function chase
+function chase() {
+    console.log('Tom Chases Jerry!');
+    caught(); //involing a function caught()
+}
+
+//Declare a Function caught()
+function caught(){
+    console.log('Tom caught Jerry!');
+}
+```
+
+O/P:
+
+Tom Chases Jerry!
+
+Tom caught Jerry!
+
+Here we didn’t got any error like variable hoisting.
+
+Because of Hoisting
+
+The Phase we are creating memory for variable is known as **variable hoisting.**
+
+The Phase we are creating memory for function and doing the basic initialization known as **variable hoisting.**
+
+GEC:
+
+CP:
+
+chase(): initialize and memory creation
+
+caught(): initialize and memory creation
+
+EP:
+
+chase //invoking
+
+FEC:
+
+CP: No function or variables to define
+
+EP: Tom chases Jerry!
+
+caught //invoking
+
+FEC:
+
+CP: No function or variables to define
+
+EP: Tom caught Jerry
+
+this is how it executed.
+
+Code: Function as an Expression
+
+```jsx
+test();
+var test=function(){
+    console.log('I am Being Tested');
+}
+```
+
+O/P:
+
+Uncaught TypeError: test is not a function
+
+GEC:
+
+CP: 
+
+test: undefined //variable
+
+EP:
+
+But in Execution Phase test will try to execute, test is created as an variable. But there is an parenthesis after test[test()]. There is a parenthesis after an variable. A Function only will only have with an parentheses.
+
+value of test is undefined
+
+Note:
+
+undefined() 
+
+If we run on Dev tools we will get the below output.
+
+VM273:1 Uncaught TypeError: undefined is not a function
+at <anonymous>:1:2
+
+So, this is the reason we got error in above CODE.
