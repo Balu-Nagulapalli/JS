@@ -1,0 +1,191 @@
+		Scope and Scope Chain in JS 
+
+**Scope:** Scope is the area of the program where a variable or function can be accessed (used).
+
+4 Types of Scope in JS
+
+1. Global Scope
+2. Function Scope
+3. Block Scope
+4. Module Scope
+
+**Global Scope:** Variables declared outside of any function or any block scope are in a global scope.
+
+code:
+
+```jsx
+console.log("Welcome to Day 10!");
+
+let name = 'Balu';
+
+function greetings(){
+    console.log('Hello ',name );
+}
+greetings();
+
+console.log(name);
+
+{
+    console.log('Inside a Block', name);
+}
+```
+
+o/p:
+
+Welcome to Day 10!
+
+Hello  Balu
+10 Balu
+Inside a Block Balu
+
+If we do [window.name](http://window.name) in dev tools, it giving output as empty.
+
+It we change the declaration of variable name with var, and If we do [window.name](http://window.name) in dev tools, It will give output as Balu
+
+**Note:**
+
+When we declare a variable with var in global scope, that particular variable will becomes the property of our global object(Window Object). 
+
+IMP NOTES:
+
+When we declare something with var in global scope, added as an property to the Window o\Object. So that’s why if we do [window.name](http://window.name) in dev tools its giving Balu
+
+When we declare a variable with let or const, it will not add to the Window Object. 
+
+**let and const are blocked scope, that is the reason they do not attach/add themselves to the Window Object.**
+
+where as var is function scope.
+
+====================================
+
+---
+
+**Function Scope:** Variables declared inside a function are only accessible with in that function.
+
+If it is var, let or const, If they are declared inside the function, they can be accessible with in that function only. We cannot access that outside the function.
+
+code:
+
+```jsx
+function toDo(){
+    var task = "Learning 40 Days of JS";
+    console.log(task);
+}
+
+toDo();
+
+console.log(task);
+```
+
+o/p:
+
+Learning 40 Days of JS
+
+and reference error for second console.log(task) as we are trying to access the variable task that is declared inside a function.
+
+====================================
+
+**Block Scope:** Variables declared using let and const inside a block (using {}) cannot be accessed outside the block.
+
+NOTE:
+
+But if the variable is declared with var it can accessed outside of the block.
+
+Code:
+
+```jsx
+{
+    let count = 10;
+    console.log(count);
+}
+console.log(count);
+```
+
+o/p:
+
+10
+
+For second console.log(count) shows reference error as we are trying to access the variable that is declared inside the block.
+
+code:
+
+```jsx
+{
+    var count = 10;
+    console.log(count);
+}
+console.log(count);
+```
+
+o/p:
+
+10
+
+10
+
+====================================
+
+**Scope Chain:**
+
+**Scope Chain is the process JavaScript uses to look for a variable in the current scope and then in outer (parent) scopes until it finds it or reaches the global scope.**
+
+code:
+
+```jsx
+console.log("New Example:")
+var countt = 10;
+
+function outerr(){
+    var countt=20;
+
+    function innerr(){
+        var countt = 30;
+        console.log(countt); //30
+    }
+    innerr();
+    console.log(countt); //20
+}
+outerr();
+console.log(countt); //10
+```
+
+o/p:
+
+30
+
+20
+
+10
+
+If we comment the countt=30 in inner scope we will get output as 
+
+20
+
+20
+
+10
+
+Why because, Scope chain will take countt from up countt=20 variable.
+
+====================================
+
+**Variable Shadowing:**
+Variable Shadowing happens when a variable declared in an inner scope has the same name as a variable in an outer scope. The inner variable “shadows” (hides) the outer variable.
+
+code:
+
+```jsx
+let message="I am Doing Great";
+function situation(){
+    let message="I am Not Great";
+}
+
+situation();
+console.log(message);
+```
+
+o/p:
+
+I am Not Great
+
+I am Doing Great
