@@ -1,0 +1,91 @@
+	JavaScript Closures With Real-World Examples 
+
+
+Closure: A closure allows a function to access a variable from its outer scope, even after the outer scope finishes its execution.
+
+```jsx
+function outer(){
+    let x=10;
+
+    return function inner(){
+        console.log(x);
+    }
+    inner();
+}
+const func=outer();
+console.log(func());
+
+```
+
+//o/p: 10
+
+```jsx
+function outerFunction(){
+    let count=0;
+
+    return function innerCount(){
+        count++;
+        console.log(count);
+    }
+}
+const retValue=outerFunction();
+
+retValue(); //1
+retValue(); //2
+retValue(); //3
+```
+
+o/p:
+
+1
+
+2
+
+3
+
+Note: Closure can cause Memory Leak Problem/ Memory Mis-utilization.
+
+code:
+
+```jsx
+function dealingWithData(){
+    let bigData=new Array(10000000).fill("*")
+
+    return function(){
+        console.log(bigData[3]);
+    }
+}
+
+const variable12 = dealingWithData();
+console.log(variable12());
+```
+
+o/p: *
+
+Problem Explanation: variable12 will have a reference of bigData array in Execution Phase/ context. As it is having reference Garbage Collector is not coming to clean up. 
+
+ Garbage Collector will come to clean up only when there is no there is no reference available to that memory location from anywhere.
+
+But in above example  case, variable12 is having reference to bigData. So bigData is never going  to clean up.
+
+This leads to Memory Leak or any issues.
+
+Advantages of Closure:
+
+1. We can keep the variables private without exposing them.
+2. We can stop variable pollution(means exposing outside, nobody can access and and change directly….Can change using closure or function).
+3. We can create a function factory(having a bunch of Methods).
+4. We can keep a variable alive between calls.
+
+```
+//Closure in Event Handler
+
+function setUpButton(){
+    let clickCount = 0;
+    document.getElementById("myButton").addEventListener("click", function(){
+        clickCount++;
+        console.log(`Button Clicked ${clickCount} times`)
+    })
+}
+setUpButton();
+```
